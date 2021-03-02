@@ -6,20 +6,30 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE DATABASE IF NOT EXISTS `the_agile_monkeys_crm_service_tests`;
 
-USE `the_agile_monkeys_crm_service_tests`;
+/**
+ * Feathers takes care of creating the database for us. But we want a separete
+ * database to run the tests without filling the production database.
+ * This script helps us in this task.
+ */
+ 
+
+CREATE DATABASE IF NOT EXISTS `fictional_motor_company_tests`;
+
+USE `fictional_motor_company_tests`;
 
 # `customers` table
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `customers`;
+DROP TABLE IF EXISTS `sales`;
 
-CREATE TABLE `customers` (
+CREATE TABLE `sales` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `surname` varchar(255) DEFAULT NULL,
-  `photo` varchar(255) DEFAULT NULL,
+  `model` varchar(255) DEFAULT NULL,
+  `engine` varchar(255) DEFAULT NULL,
+  `doors` varchar(255) DEFAULT NULL,
+  `color` varchar(255) DEFAULT NULL,
+  `extras` varchar(255) DEFAULT NULL,
   `createdById` int(11) DEFAULT NULL,
   `updatedById` int(11) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
@@ -62,4 +72,4 @@ CREATE TABLE `users` (
 
 
 #INSERT INTO `users` (`email`, `password`, `permissions`)
-#VALUES ('admin@theagilemonkeys.com', 'asdf1234', 'admin');
+#VALUES ('admin@fictionalMotor.com', 'asdf1234', 'admin');

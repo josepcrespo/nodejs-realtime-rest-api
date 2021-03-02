@@ -26,7 +26,7 @@ services:
         build: ./dockerfiles/mysql_database
         environment:
             MYSQL_ROOT_PASSWORD: secret
-            MYSQL_DATABASE: the_agile_monkeys_crm_service
+            MYSQL_DATABASE: fictional_motor_company
         ports:
             # <Port exposed> : <MySQL Port running inside container>
             - '3306:3306'

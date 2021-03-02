@@ -52,9 +52,8 @@ app.configure(swagger({
   uiIndex: path.join(__dirname, '../public/docs/swagger-ui.html'),
   specs: {
     info: {
-      title: 'CRM service - API docs',
-      description: 'An API test built with Node.js, FeathersJS and more,' +
-                   ' for The Agile Monkeys team.',
+      title: 'Fictional Motor Co - API docs',
+      description: 'A REST API demo built with Node.js, FeathersJS and more.',
       version: '1.0.0'
     },
     components: {

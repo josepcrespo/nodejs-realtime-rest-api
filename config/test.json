@@ -1,4 +1,4 @@
 {
   "port": 8998,
-  "mysql": "mysql://root:secret@mysql_server:3306/the_agile_monkeys_crm_service_tests"
+  "mysql": "mysql://root:secret@mysql_server:3306/fictional_motor_company_tests"
 }

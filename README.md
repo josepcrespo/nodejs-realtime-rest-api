@@ -1,12 +1,12 @@
 Live app on [Heroku](https://heroku.com/) 🕺
 
-[https://theam-crm-service.herokuapp.com](https://theam-crm-service.herokuapp.com)
+[https://nodejs-realtime-rest-api.herokuapp.com](https://nodejs-realtime-rest-api.herokuapp.com)
 
 ![public/index.html](readme_images/public-index.gif)
 
 Table of contents:
 
-- [The Agile Monkeys API Test](#the-agile-monkeys-api-test)
+- [A realtime Node.js based REST API](#a-realtime-nodejs-based-rest-api)
 	* [Disclaimer](#disclaimer)
 	* [Project introduction](#project-introduction)
 		+ [Mandatory implementation requirements](#mandatory-implementation-requirements)
@@ -39,54 +39,42 @@ Table of contents:
 
 ----------
 
-# The Agile Monkeys Api Test
+# A realtime Node.js based REST API
 
-A REST API to manage customer data for a small shop.
+A REST API to manage a the sales of "Fictional Motor Co", a global automobiles manufacturer and seller. They require a scalable REST API with the possibility of consuming part of the data in realtime. Of course, all of this with the corresponding security and, CRUD functionality.
 
 ## Disclaimer
 
-This is a demo project to provide an example of my skills for building a [REST compliant API](https://en.wikipedia.org/wiki/Representational_state_transfer). This time, I’ve decided to use [Feathers](https://feathersjs.com/), a [Node.js](https://nodejs.org/) framework oriented for building real-time applications and REST APIs. I've made an extensive use of the latest version of [ECMAScript](https://en.wikipedia.org/wiki/ECMAScript) on the backend and, used a few cool features of [Vue.js](https://vuejs.org/) on the frontend. Other modern development tools used are: [NPM](https://www.npmjs.com/) (the Node.js package manager), [Sequelize](https://sequelize.org/) (a promise-based Node.js ORM for relational databases), [MySQL](https://www.mysql.com/) server (for data storage), [Docker](https://www.docker.com/) (helps to create the necessary environment for developing or running the application) and, the [Swagger](https://swagger.io/) toolset (for exploring and interacting with the API). And, of course, I’ve used [Git](https://git-scm.com/) for code control version and, a basic knowledge of the [Unix Shell](https://en.wikipedia.org/wiki/Unix_shell) for interacting with the respective [CLI (command-line interface)](https://en.wikipedia.org/wiki/Command-line_interface) for Git, Docker and, Feathers. The full project has been developed on [macOS](https://www.apple.com/es/macos/what-is/) [Catalina](https://en.wikipedia.org/wiki/MacOS_Catalina) (v10.15.6) on top of a [MacBook Air mid 2012](https://support.apple.com/kb/SP670?viewlocale=en_US&locale=es_ES).
+This is a demo project to provide an example of my skills for building a [REST compliant API](https://en.wikipedia.org/wiki/Representational_state_transfer), with the addition of a layer for real-time (thanks to [WebSockets](https://en.wikipedia.org/wiki/WebSocket)). This time, I’ve decided to use [Feathers](https://feathersjs.com/), a [Node.js](https://nodejs.org/) framework oriented for building real-time applications and REST APIs. I've made an extensive use of the latest version of [ECMAScript](https://en.wikipedia.org/wiki/ECMAScript) on the backend and, used a few cool features of [Vue.js](https://vuejs.org/) on the frontend. Other modern development tools used are: [NPM](https://www.npmjs.com/) (the Node.js package manager), [Sequelize](https://sequelize.org/) (a promise-based Node.js ORM for relational databases), [MySQL](https://www.mysql.com/) server (for data storage), [Docker](https://www.docker.com/) (helps to create the necessary environment for developing or running the application) and, the [Swagger](https://swagger.io/) toolset (for exploring and interacting with the API). And, of course, I’ve used [Git](https://git-scm.com/) for code control version and, a basic knowledge of the [Unix Shell](https://en.wikipedia.org/wiki/Unix_shell) for interacting with the respective [CLI (command-line interface)](https://en.wikipedia.org/wiki/Command-line_interface) for Git, Docker and, Feathers. The full project has been developed on [macOS](https://www.apple.com/es/macos/what-is/) [Catalina](https://en.wikipedia.org/wiki/MacOS_Catalina) (v10.15.6) on top of a [MacBook Air mid 2012](https://support.apple.com/kb/SP670?viewlocale=en_US&locale=es_ES).
 
 You can use this project for your needs under your total responsibility. You can, for example, fork it and, use it as a foundation for your own project if you found it useful.
 
 ## Project introduction
 
-The objective of this project is to provide a REST API to manage customer data for a small shop. It will work as the backend side for a [CRM](https://en.wikipedia.org/wiki/Customer_relationship_management) interface that is being developed by a different team.
+Fictional Motor Co manufactures and sells automobiles globally, with new vehicles sold through regional sales offices.
+
+Global headquarters requires each of the regional offices to submit information on vehicle sales, and this is expected to be near real-time (within 30 seconds of a complete sale). This enables headquarters to effectively manage the manufacturing portion of the business.
+
+Sales data is stored in a central location within the headquarters infrastructure, some transformation is applied to the input data. Manufacturing facilities use the data to increase and decrease production, including the procurement of necessary parts. In addition, the data is used for aggregate reporting purposes.
+
+Different vehicle models are produced in different areas of the world, with some of the vehicle parts built in locally owned facilities, while others come from external, local and overseas producers.
+
+Each production facility has different supply chains and lead times, and as such everyone needs to access information about new vehicles as often as is best for them.
+
+All manufacturing plants poll the data regarding new sales, some poll every minute and some once a day. The amount of data extracted can be enormous.
 
 ### Mandatory implementation requirements
 
-- The API should be only accessible by a registered user by providing an authentication mechanism.
-- A user can only:
-	- List all customers in the database.
-	- Get full customer information, including a photo URL.
-	- Create a new customer:
-		- A customer should have at least name, surname, id and a photo field.
-		- Name, surname and id are required fields.
-		- Image uploads should be able to be managed.
-		- The customer should have a reference to the user who created it.
-	- Update an existing customer.
-		- The customer should hold a reference to the last user who modified it.
-	- Delete an existing customer.
-- An admin can also:
-	- Manage users:
-		- Create users.
-		- Delete users.
-		- Update users.
-		- List users.
-		- Change admin status.
-- Good code quality: Readability and simplicity, good semantics, idiomatic code and adoption of framework standards.
-- Good software architecture: Low coupling, ease to change, good use of design patterns, use of framework or specific language patterns.
-- Basic security measures (Authentication, Authorization, SQL injection and XSS prevention).
+- Produce an API specification that will allow regional sales offices to send sales information to headquarters.
+- Produce an API specification that will be used by manufacturing facilities to extract information on new car sales from headquarters.
+- Produce an architecture diagram of the solution, include the APIs and the persistence layer. Suppose we will use a cloud-based provider.
+- Produce some simple prototypes.
+- Safety is essential.
+- If the details are not detailed, you are expected to make valid assumptions about what they would be. i.e data payloads, acceptable security, etc.
 
 ### Optional implementation requirements
 
-- Good README file with a getting started guide.
-- Tests implemented for the solution.
-- Making project set-up easier for newcomers.
-- The application follows the twelve-factor app principles [12factor.net](https://12factor.net) in order for it to be scalable.
-- Follow [OAuth 2 protocol](https://oauth.net/2/) for authentication (using a third party public OAuth provider is allowed).
-- The project is ready for [Continuous Deployment](https://en.wikipedia.org/wiki/Continuous_deployment) using a provider (e.g., [AWS](https://aws.amazon.com/)).
-- The project uses [Docker](https://www.docker.com/), [Vagrant](https://www.vagrantup.com/) or other tools to make it easier to configure development environments.
+- Produce some tests or a test installation. (think PostMan or an automated testing suite/tool).
 
 ### Proposed solution
 
@@ -116,15 +104,15 @@ Also, it’s worth to mention that I’ve followed the security considerations d
 You need [Git](https://git-scm.com) >= `v2.24.3` and, [Docker Engine](https://docker.com/) >= `v18.06.0`.
 
 ```bash
-$ git clone https://github.com/josepcrespo/the-agile-monkeys-api-test.git &&
-  cd the-agile-monkeys-api-test &&
+$ git clone https://github.com/josepcrespo/nodejs-realtime-rest-api.git &&
+  cd nodejs-realtime-rest-api &&
   docker-compose build --no-cache --force-rm &&
   docker-compose up
 ```
 
 The project runs on [http://localhost:3030/](http://localhost:3030/).
 
-You can also check [a live version running on Heroku](https://theam-crm-service.herokuapp.com/). You can not run the tests, because is a production deployment. Anyway, you can check the current tests coverage at [https://theam-crm-service.herokuapp.com/tests-coverage/](https://theam-crm-service.herokuapp.com/tests-coverage/) and, do everything else including the creation of a new `customer` with photo (that implies the upload of the file to the server).
+You can also check [a live version running on Heroku](https://nodejs-realtime-rest-api.herokuapp.com/). You can not run the tests, because is a production deployment. Anyway, you can check the current tests coverage at [https://nodejs-realtime-rest-api.herokuapp.com/tests-coverage/](https://nodejs-realtime-rest-api.herokuapp.com/tests-coverage/) and, do everything else including the access to view the realtime status page for the manufacturing facilities.
 
 ## Project installation
 
@@ -190,12 +178,12 @@ When the installation is done, take note of your MySQL server connection paramet
 - The database user password.
 - The IP address or domain name of the server.
 - The port number where the service is exposed.
-- A database named `the_agile_monkeys_crm_service`.
+- A database named `fictional_motor_company`.
 
 When you have this parameters at hand, you need to edit the `/config/default.json` file. Find the following line on the file:
 
 ```json
-"mysql": "mysql://root:secret@mysql_server:3306/the_agile_monkeys_crm_service"
+"mysql": "mysql://root:secret@mysql_server:3306/fictional_motor_company"
 ```
 
 and, change it accordingly to your local MySQL server connection parameters. The template is:
@@ -209,7 +197,7 @@ and, change it accordingly to your local MySQL server connection parameters. The
 Open a shell and navigate where you want to install the project. Then run:
 
 ```bash
-$ git clone https://github.com/josepcrespo/the-agile-monkeys-api-test.git
+$ git clone https://github.com/josepcrespo/nodejs-realtime-rest-api.git
 ```
 
 Enter into the project root directory and install the dependencies:
@@ -235,7 +223,7 @@ $ npm install
 Open a shell and navigate where you want to install the project. Then run:
 
 ```bash
-$ git clone https://github.com/josepcrespo/the-agile-monkeys-api-test.git
+$ git clone https://github.com/josepcrespo/nodejs-realtime-rest-api.git
 ```
 
 Make sure Docker is running on your machine. Enter into the project root directory and run the following command for downloading the necessary _Docker images_ and, building the _Docker containers_:
@@ -333,15 +321,15 @@ OAuth is an open authentication standard supported by almost every major platfor
 
 After a successful login the third party provider (GitHub in our case), will redirect back the user to our application with a valid JWT or, an error message in other case.
 
-In order to log in with GitHub, visit [http://localhost:3030/oauth/github](http://localhost:3030/oauth/github). You will be redirected to GitHub and asked to authorize the authentication into our application, using your GitHub account. If everything went well, you will see a JWT, valid for 24 hours, that you can use for making requests to the API endpoints that require authentication. Keep in mind that all users are created with "user" role permissions as default (this role only can operate with the `/customers` service).
+In order to log in with GitHub, visit [http://localhost:3030/oauth/github](http://localhost:3030/oauth/github). You will be redirected to GitHub and asked to authorize the authentication into our application, using your GitHub account. If everything went well, you will see a JWT, valid for 24 hours, that you can use for making requests to the API endpoints that require authentication. Keep in mind that all users are created with "salesman" role permissions as default (this role only can create new sales with the `/sales` service).
 
 Login with GitHub example:
 
-![GitHub Oauth login](readme_images/github-oauth-login.gif)
+![GitHub Oauth login](readme_images/github-oauth-login-motorsco.gif)
 
 Performing a `curl` request using the returned JWT after login with GitHub:
 
-![curl request using a JWT](readme_images/curl-request-with-jwt.gif)
+![curl request using a JWT](readme_images/curl-request-with-jwt-motorsco.gif)
 
 
 > :exclamation: You need to enter [github.com](https://github.com/) and, logout from your session if you want to test the full "Login with GitHub" flow again. Or, you can just visit [http://localhost:3030/oauth/github](http://localhost:3030/oauth/github) all the times you want to obtain a new valid JWT, GitHub will not ask for authorization since you already granted before.
@@ -352,25 +340,35 @@ Performing a `curl` request using the returned JWT after login with GitHub:
 
 ### Pre-configured users
 
-The project comes with two users already registered so you can easily start to test the API. One user comes with “admin” privileges (this user role can perform any operation with the API) and, the other one only has “user” privileges (this user role only allows to interact with the `/customers` service).
+The project comes with three users already registered so you can easily start to test the API. First user comes with “admin” privileges (this user role can perform any operation with the API). Second user, only have “salesman” privileges (this user role only allows to create new sales with the `/sales` service). And, the third, only have “manufacturer” privileges (this user role only allows to get and find sales with the `/sales` service).
 
 **Admin user:**
 
 ```json
 {
-	"email": "admin@theagilemonkeys.com",
+	"email": "admin@fictionalMotor.com",
 	"password": "asdf1234",
 	"permissions": "admin"
 }
 ```
 
-**Basic user:**
+**Salesman user:**
 
 ```json
 {
-	"email": "user@theagilemonkeys.com",
+	"email": "saleman1@fictionalMotor.com",
 	"password": "asdf1234",
-	"permissions": "user"
+	"permissions": "salesman"
+}
+```
+
+**Manufacturer user:**
+
+```json
+{
+	"email": "manufacturer1@fictionalMotor.com",
+	"password": "asdf1234",
+	"permissions": "manufacturer"
 }
 ```
 
@@ -380,7 +378,7 @@ If you want to login with a user, you need to set the `strategy` property to `lo
 ```json
 {
 	"strategy": "local",
-	"email": "user@theagilemonkeys.com",
+	"email": "admin@fictionalMotor.com",
 	"password": "asdf1234"
 }
 ```
@@ -388,10 +386,10 @@ If you want to login with a user, you need to set the `strategy` property to `lo
 and, here you have an example using `curl` command:
 
 ```bash
-curl -X POST "http://localhost:3030/authentication" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"strategy\":\"local\",\"email\":\"user@theagilemonkeys.com\",\"password\":\"asdf1234\"}"
+curl -X POST "http://localhost:3030/authentication" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"strategy\":\"local\",\"email\":\"salesman1@fictionalMotor.com\",\"password\":\"asdf1234\"}"
 ```
 
-![Authenticating with local strategy using curl](readme_images/curl-authentication.gif)
+![Authenticating with local strategy using curl](readme_images/curl-authentication-motorco.gif)
 
 ### Feathers CRUD
 
@@ -418,7 +416,7 @@ When used as a REST API, incoming requests get mapped automatically to their cor
 
 ### Swagger UI docs
 
-![Swagger UI docs](readme_images/swagger-ui-docs.gif)
+![Swagger UI docs](readme_images/swagger-ui-docs-motorco.gif)
 
 The project comes with a full Swagger UI setup so, you can play with the API directly on the docs page. All Feathers services exposed by the API have their own documentation for each method, examples, live execution of queries and, their respective responses.
 
@@ -428,29 +426,26 @@ You can visit [http://localhost:3030/docs/swagger-ui.html](http://localhost:3030
 
 Here you have an example of authenticating with local strategy and, retrieving a users list using Swagger UI:
 
-![Get a users list with Swagger UI](readme_images/swagger-ui-example.gif)
+![Get a users list with Swagger UI](readme_images/swagger-ui-example-motorco.gif)
 
 > :warning: **You need a local client for consuming APIs**, such as _Postman API Client_ or _Insmonia Core_ **for using the JWT provided by GitHub Oauth to authenticate API requests**.
-
-> :warning: **You need a local client for consuming APIs**, such as _Postman API Client_ or _Insmonia Core_ **to test image upload in the `/customers` service**.
 
 ### Run with Postman API Client
 
 Click on the button below for importing a _Postman Collection_ into your Postman API Client. The _Collection_ is built with all the API endpoints so you can test everything the API exposes with this great tool.
 
+motorco:
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/1859282581eec69ec6b6)
 
-The collection is called `CRM service - API docs`.
+The collection is called `Fictional Motor Co - API docs`.
 
 > :eyes: Remember to set a valid JWT on the _Authorization_ tab of a Postman request (if the request requires authentication) using the _Bearer token_ option.
-
-![Creating a customer with a photo, using Postman](readme_images/new-customer-with-photo-using-postman.gif)
 
 ## Tests
 
 The project comes full of tests (not 100%, but close). Tests are done using the [Mocha framework](https://mochajs.org/) and the [Node.js native Assert module](https://nodejs.org/api/assert.html). After running tests, [Istanbul](https://istanbul.js.org/) creates a comprehensive report of the test coverage, directly in the console and as an [HTML page](http://localhost:3030/tests-coverage/).
 
-![Istanbul coverage reports in HTML format](readme_images/istanbul-coverage-reports.png)
+![Istanbul coverage reports in HTML format](readme_images/istanbul-coverage-reports-motorco.png)
 
 There is no tests for CRUD operations because all this functionallity is already tested by the Feathers framework internally. Only a few edge cases are tested, for example, when a request interacts somehow with a custom Feathers Hook.
 
@@ -459,7 +454,7 @@ There is no tests for CRUD operations because all this functionallity is already
 Open the `/config/test.json` file. Find the following line on the file:
 
 ```json
-"mysql": "mysql://root:secret@mysql_server:3306/the_agile_monkeys_crm_service_tests"
+"mysql": "mysql://root:secret@mysql_server:3306/fictional_motor_company_tests"
 ```
 
 and, change it accordingly to your local MySQL server connection parameters. The template is:
@@ -468,7 +463,7 @@ and, change it accordingly to your local MySQL server connection parameters. The
 "mysql": "mysql://<user>:<password>@<ip_address>:<port_number>/<database_name>"
 ```
 
-Move into your project’s root directory an run:
+Move into your project’s root directory and run:
 
 ```bash
 $ npm run test
@@ -489,7 +484,7 @@ $ docker-compose up
 and, then:
 
 ```bash
-$ docker exec -it the-agile-monkeys-api-test_node_server_1 npm run test
+$ docker exec -it nodejs-realtime-rest-api_node_server_1 npm run test
 ```
 
 ### Coverage report in plain text format
@@ -622,7 +617,7 @@ $ docker-compose up
 and, then:
 
 ```bash
-$ docker exec -it the-agile-monkeys-api-test_node_server_1 npm run publish-coverage
+$ docker exec -it nodejs-realtime-rest-api_node_server_1 npm run publish-coverage
 ```
 
 You can view the output here [http://localhost:3030/tests-coverage/](http://localhost:3030/tests-coverage/).
@@ -645,9 +640,6 @@ You can view the output here [http://localhost:3030/tests-coverage/](http://loca
 - [Better JSON errors with Feathers](https://docs.feathersjs.com/help/faq.html#why-am-i-not-getting-json-errors)
 - [Role and permissions with Feathers](https://github.com/feathersjs-ecosystem/feathers-permissions)
 - [Validation with Feathers](https://docs.feathersjs.com/help/faq.html#how-do-i-do-validation)
-- [File uploads in Feathers](https://docs.feathersjs.com/cookbook/express/file-uploading.html)
-- [Painless file upload with Feathers](https://medium.com/@mohammedalrowad/painless-file-upload-using-feathersjs-services-e994e4734e0c)
-- [Using multer to manage file uploads](https://riptutorial.com/es/node-js/example/14210/carga-de-un-solo-archivo-usando-multer)
 
 ### Sequelize
 

@@ -4,18 +4,22 @@ const createModel = require('../../models/users.model');
 const hooks       = require('./users.hooks');
 
 /**
- * Users to init the database table:
- * first one with `admin` permissions and, the
- * second with `user` permissions.
+ * For convenience and demonstration purposes,
+ * we initialize the `users` database table
+ * with the three types of users we need.
  */
 const initialUsers = [{
-  'email': 'admin@theagilemonkeys.com',
+  'email': 'admin@fictionalMotor.com',
   'password': 'asdf1234',
   'permissions': 'admin'
 }, {
-  'email': 'user@theagilemonkeys.com',
+  'email': 'salesman1@fictionalMotor.com',
   'password': 'asdf1234',
-  'permissions': 'user'
+  'permissions': 'salesman'
+}, {
+  "email": "manufacturer1@fictionalMotor.com",
+  "password": "asdf1234",
+  "permissions": "manufacturer"
 }];
 
 module.exports = function (app) {
@@ -58,7 +62,7 @@ module.exports = function (app) {
   serviceSchema.properties.permissions.example = 'admin';
 
   // Adding the possible values for the permissions property.
-  serviceSchema.properties.permissions.enum = ['admin', 'user'];
+  serviceSchema.properties.permissions.enum = ['admin', 'salesman', 'manufacturer'];
 
   // Adding a description for the githubId property.
   serviceSchema.properties.githubId.description =

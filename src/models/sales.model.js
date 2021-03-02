@@ -6,26 +6,51 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
 
-  const customers = sequelizeClient.define('customers', {
-    name: {
+  const sales = sequelizeClient.define('sales', {
+    model: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
+        isIn: [ ['sedan', 'coupe', 'minivan', 'SUV', 'sport'] ],
         isAlpha: true,
         notEmpty: true
       }
     },
-    surname: {
+    engine: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
+        isIn: [ ['gasoil', 'diesel', 'hybrid', 'electric'] ],
         isAlpha: true,
         notEmpty: true
       }
     },
-    photo: {
+    doors: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false,
+      validate: {
+        isIn: [ ['3', '5'] ],
+        isAlpha: true,
+        notEmpty: true
+      }
+    },
+    color: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isIn: [ ['red', 'green', 'blue', 'black', 'white'] ],
+        isAlpha: true,
+        notEmpty: true
+      }
+    },
+    extras: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isIn: [ ['none', 'basic', 'all'] ],
+        isAlpha: true,
+        notEmpty: true
+      }
     },
     createdById: {
       type: DataTypes.INTEGER,
@@ -51,17 +76,17 @@ module.exports = function (app) {
   });
 
   // eslint-disable-next-line no-unused-vars
-  customers.associate = function (models) {
+  sales.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
     const { users } = models;
-    customers.belongsTo(users, {
+    sales.belongsTo(users, {
       foreignKey: {
         name: 'createdById',
         allowNull: false
       }
     });
-    customers.belongsTo(users, {
+    sales.belongsTo(users, {
       foreignKey: {
         name: 'updatedById',
         allowNull: true
@@ -69,5 +94,5 @@ module.exports = function (app) {
     });
   };
 
-  return customers;
+  return sales;
 };

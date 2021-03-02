@@ -1,7 +1,7 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 const { hashPassword, protect } = require('@feathersjs/authentication-local').hooks;
 
-const checkFeathersPermissions = require('feathers-permissions');
+const checkPermissions = require('feathers-permissions');
 const validateUserCreate = require('../../hooks/users/users.create.validate');
 const validateUserGet = require('../../hooks/users/users.get.validate');
 const validateUserPatch = require('../../hooks/users/users.patch.validate');
@@ -10,24 +10,25 @@ const validateUserRemove = require('../../hooks/users/users.remove.validate');
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
-    find: [ checkFeathersPermissions({ roles: [ 'admin' ] }) ],
+    find: [ checkPermissions({ roles: [ 'admin' ] }) ],
     get: [ validateUserGet() ],
     create: [
-      checkFeathersPermissions({ roles: [ 'admin' ] }),
+      checkPermissions({ roles: [ 'admin' ] }),
       validateUserCreate(),
       hashPassword('password')
     ],
     update: [
-      checkFeathersPermissions({ roles: [ 'admin' ] }),
+      checkPermissions({ roles: [ 'admin' ] }),
+      validateUserPatch(),
       hashPassword('password'),
     ],
     patch: [
-      checkFeathersPermissions({ roles: [ 'admin' ] }),
+      checkPermissions({ roles: [ 'admin' ] }),
       validateUserPatch(),
       hashPassword('password')
     ],
     remove: [
-      checkFeathersPermissions({ roles: ['admin'] }),
+      checkPermissions({ roles: ['admin'] }),
       validateUserRemove()
     ]
   },

@@ -1,5 +1,5 @@
 {
-  "host": "theam-crm-service.herokuapp.com",
+  "host": "nodejs-realtime-rest-api.herokuapp.com",
   "authentication": {
     "oauth": {
       "redirect": "/",

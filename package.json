@@ -1,8 +1,8 @@
 {
-  "name": "the-agile-monkeys-api-test",
-  "description": "A REST API to manage customer data for a small shop.",
+  "name": "nodejs-realtime-rest-api",
+  "description": "A REST API to manage a the sales of \"Fictional Motor Co\".",
   "version": "0.0.0",
-  "homepage": "https://github.com/josepcrespo/the-agile-monkeys-api-test#readme",
+  "homepage": "https://github.com/josepcrespo/nodejs-reatime-rest-api#readme",
   "license": "ISC",
   "private": false,
   "main": "src",
@@ -10,6 +10,7 @@
     "feathers",
     "rest",
     "api",
+    "realtime",
     "demo"
   ],
   "author": {
@@ -18,7 +19,7 @@
   },
   "contributors": [],
   "bugs": {
-    "url": "https://github.com/josepcrespo/the-agile-monkeys-api-test/issues"
+    "url": "https://github.com/josepcrespo/nodejs-reatime-rest-api/issues"
   },
   "directories": {
     "lib": "src",
@@ -27,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/josepcrespo/the-agile-monkeys-api-test.git"
+    "url": "git+https://github.com/josepcrespo/nodejs-reatime-rest-api.git"
   },
   "engines": {
     "node": "^14.0.0",

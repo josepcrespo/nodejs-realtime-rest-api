@@ -7,7 +7,6 @@ module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
 
   const users = sequelizeClient.define('users', {
-  
     email: {
       type: DataTypes.STRING,
       unique: true,
@@ -31,14 +30,13 @@ module.exports = function (app) {
     permissions: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: 'user',
+      defaultValue: 'salesman',
       validate: {
-        isIn: [['admin', 'user']],
+        isIn: [['admin', 'salesman', 'manufacturer']],
         notEmpty: true,
         notNull: true
       }
     }
-  
   }, {
     hooks: {
       beforeCount(options) {

@@ -9,7 +9,7 @@
   "authentication": {
     "entity": "user",
     "service": "users",
-    "secret": "srQYJ/778irJfcnMM26H5rhXQRs=",
+    "secret": "srQYJ/778irJfcnMM26H5rhXQJs=",
     "authStrategies": [
       "jwt",
       "local"
@@ -35,5 +35,5 @@
       }
     }
   },
-  "mysql": "mysql://root:secret@mysql_server:3306/the_agile_monkeys_crm_service"
+  "mysql": "mysql://root:secret@mysql_server:3306/fictional_motor_company"
 }
