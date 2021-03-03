@@ -434,10 +434,9 @@ Here you have an example of authenticating with local strategy and, retrieving a
 
 Click on the button below for importing a _Postman Collection_ into your Postman API Client. The _Collection_ is built with all the API endpoints so you can test everything the API exposes with this great tool.
 
-motorco:
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/1859282581eec69ec6b6)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/e56119fa89f5107a2588)
 
-The collection is called `Fictional Motor Co - API docs`.
+The collection is called `Fictional Motor Co REST API`.
 
 > :eyes: Remember to set a valid JWT on the _Authorization_ tab of a Postman request (if the request requires authentication) using the _Bearer token_ option.
 
