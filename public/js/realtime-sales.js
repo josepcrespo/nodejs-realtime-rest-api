@@ -37,7 +37,11 @@ const loginHTML = `<main class="login container">
           Sign up and log in
         </button>
 
-        <!-- NOT IMPLEMENTED YET! <a class="button button-primary block" href="/oauth/github">
+        <a href="/" class="back-link">
+          Back to the homepage
+        </button>
+
+        <!-- SORRY, NOT IMPLEMENTED YET! <a class="button button-primary block" href="/oauth/github">
           Login with GitHub
         </a> -->
       </form>
@@ -64,15 +68,28 @@ const addSale = sale => {
   const sales = document.querySelector('.sales-list');
 
   if(sales) {
-    sales.innerHTML += `<div class="sale-item">
+    sales.innerHTML += 
+    `<div class="sale-item">
       <div class="sale-wrapper">
         <p class="sale">
-          <h4 class="sale-created-at">New sale: ${moment(sale.createdAt).format('MMM Do, hh:mm:ss')}</h4>
-          <div class="sale-item-prop sale-model">car model<span class="tag-value">${sale.model}</span></div>
-          <div class="sale-item-prop sale-engine">type of engine<span class="tag-value">${sale.engine}</span></div>
-          <div class="sale-item-prop sale-doors">number of doors<span class="tag-value">${sale.doors}</span></div>
-          <div class="sale-item-prop sale-color">color<span class="tag-value">${sale.color}</span></div>
-          <div class="sale-item-prop sale-extras">extras<span class="tag-value">${sale.extras}</span></div>
+          <h4 class="sale-created-at">
+            New sale: ${moment(sale.createdAt).format('MMM Do, hh:mm:ss')}
+          </h4>
+          <div class="sale-item-prop sale-model">
+            car model<span class="tag-value">${sale.model}</span>
+          </div>
+          <div class="sale-item-prop sale-engine">
+            type of engine<span class="tag-value">${sale.engine}</span>
+          </div>
+          <div class="sale-item-prop sale-doors">
+            number of doors<span class="tag-value">${sale.doors}</span>
+          </div>
+          <div class="sale-item-prop sale-color">
+            color<span class="tag-value">${sale.color}</span>
+          </div>
+          <div class="sale-item-prop sale-extras">
+            extras<span class="tag-value">${sale.extras}</span>
+          </div>
         </p>
       </div>
     </div>`;
@@ -120,21 +137,33 @@ const getCredentials = () => {
 // Log in either using the given email/password or the token from storage
 const login = async credentials => {
   try {
+    let authenticated = null;
     if(!credentials) {
       // Try to authenticate using an existing token
-      await client.reAuthenticate();
+      authenticated = await client.reAuthenticate();
     } else {
       // Otherwise log in with the `local` strategy using the credentials we got
-      await client.authenticate({
+      authenticated = await client.authenticate({
         strategy: 'local',
         ...credentials
       });
     }
 
-    // If successful, show the sales page
-    showSales();
+    // If successful and,
+    // has apropriate permissions,
+    // show the sales page.
+    if (
+      authenticated.user.permissions === 'admin' ||
+      authenticated.user.permissions === 'manufacturer'
+    ) {
+      showSales();
+    } else {
+      await client.logout();
+      showLogin({ message: 'Your user does not have permission to login here.' });
+    }
   } catch(error) {
     // If we got an error, show the login page
+    await client.logout();
     showLogin(error);
   }
 };
