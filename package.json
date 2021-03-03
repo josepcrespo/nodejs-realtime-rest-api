@@ -66,12 +66,12 @@
     "feathers-permissions": "^2.0.2",
     "feathers-sequelize": "^6.2.0",
     "feathers-swagger": "^1.2.1",
-    "swagger-ui-dist": "^3.32.4",
     "helmet": "^3.23.3",
     "multer": "^1.4.2",
     "mysql2": "^2.1.0",
     "sequelize": "^6.3.4",
     "serve-favicon": "^2.5.0",
+    "swagger-ui-dist": "^3.32.4",
     "winston": "^3.3.3"
   },
   "devDependencies": {
