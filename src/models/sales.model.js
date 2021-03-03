@@ -13,7 +13,8 @@ module.exports = function (app) {
       validate: {
         isIn: [ ['sedan', 'coupe', 'minivan', 'SUV', 'sport'] ],
         isAlpha: true,
-        notEmpty: true
+        notEmpty: true,
+        notNull: true
       }
     },
     engine: {
@@ -22,7 +23,8 @@ module.exports = function (app) {
       validate: {
         isIn: [ ['gasoil', 'diesel', 'hybrid', 'electric'] ],
         isAlpha: true,
-        notEmpty: true
+        notEmpty: true,
+        notNull: true
       }
     },
     doors: {
@@ -31,7 +33,8 @@ module.exports = function (app) {
       validate: {
         isIn: [ ['3', '5'] ],
         isNumeric: true,
-        notEmpty: true
+        notEmpty: true,
+        notNull: true
       }
     },
     color: {
@@ -40,7 +43,8 @@ module.exports = function (app) {
       validate: {
         isIn: [ ['red', 'green', 'blue', 'black', 'white'] ],
         isAlpha: true,
-        notEmpty: true
+        notEmpty: true,
+        notNull: true
       }
     },
     extras: {
@@ -49,13 +53,15 @@ module.exports = function (app) {
       validate: {
         isIn: [ ['none', 'basic', 'all'] ],
         isAlpha: true,
-        notEmpty: true
+        notEmpty: true,
+        notNull: true
       }
     },
     createdById: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
+        notNull: true,
         notEmpty: true,
         isInt: true
       },
