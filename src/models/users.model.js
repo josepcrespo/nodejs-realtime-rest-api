@@ -9,6 +9,7 @@ module.exports = function (app) {
   const users = sequelizeClient.define('users', {
     email: {
       type: DataTypes.STRING,
+      allowNull: true,
       unique: true,
       validate: {
         isEmail: true,
@@ -17,12 +18,14 @@ module.exports = function (app) {
     },
     password: {
       type: DataTypes.STRING,
+      allowNull: true,
       validate: {
         notEmpty: true
       }
     },
     githubId: {
       type: DataTypes.STRING,
+      allowNull: true,
       validate: {
         isInt: true
       }

@@ -57,7 +57,7 @@ describe('users', () => {
       password: 'secret'
     });
 
-    assert.equal(basicUser.permissions, 'user');
+    assert.equal(basicUser.permissions, 'salesman');
   });
   
 });

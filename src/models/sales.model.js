@@ -30,7 +30,7 @@ module.exports = function (app) {
       allowNull: false,
       validate: {
         isIn: [ ['3', '5'] ],
-        isAlpha: true,
+        isNumeric: true,
         notEmpty: true
       }
     },
@@ -58,6 +58,10 @@ module.exports = function (app) {
       validate: {
         notEmpty: true,
         isInt: true
+      },
+      references: {
+        model: 'users',
+        key: 'id'
       }
     },
     updatedById: {
@@ -65,6 +69,10 @@ module.exports = function (app) {
       allowNull: true,
       validate: {
         isInt: true
+      },
+      references: {
+        model: 'users',
+        key: 'id'
       }
     }
   }, {

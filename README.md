@@ -356,7 +356,7 @@ The project comes with three users already registered so you can easily start to
 
 ```json
 {
-	"email": "saleman1@fictionalMotor.com",
+	"email": "salesman1@fictionalMotor.com",
 	"password": "asdf1234",
 	"permissions": "salesman"
 }

@@ -13,23 +13,23 @@ describe('sales hook: patch.process', () => {
     const newModel = 'sedan';
     // Calling a Feathers service from inside the Feathers app
     // can be done without providing authentication on the request.
-    const salesUser = await app.service('users').create({
+    const user = await app.service('users').create({
       email: 'user' + new Date().getTime() + '@mailprovider.com',
       password: 'secret'
     });
     let sale = await app.service('sales').create(
       { model, engine, doors, color, extras },
-      { user: salesUser }
+      { user }
     );
     sale = await app.service('sales').patch(
       sale.id, 
-      { name: newModel },
-      { user: salesUser }
+      { model: newModel },
+      { user }
     );
 
     // Makes sure `updatedById` property value is equal
     // to the ID of user who updated it.
-    assert.equal(sale.updatedById, salesUser.id);
+    assert.equal(sale.updatedById, user.id);
 
     // Makes sure the `updated` property value has been changed as expected
     assert.equal(sale.model, newModel);

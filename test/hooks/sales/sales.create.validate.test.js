@@ -7,34 +7,36 @@ const creatingUserWithout = 'Throws a BadRequest when tries to create a `sale` w
 const expectedBadRequest = 'Expected Feathers BadRequest not thrown.';
 const feathersErrorType = 'FeathersError';
 const badRequestHtmlStatusCode = 400;
-const model = 'Sport';
-const engine = 'hybrid';
-const doors = '3';
-const color = 'red';
-const extras = 'basic';
+
+const model = 'minivan';
+const engine = 'gasoil';
+const doors = '5';
+const color = 'yellow';
+const extras = 'none';
 
 describe('sales hook: create.validate', () => {
   it(creatingUserWithout + '`model`, `engine`, `doors`, `color`, `extras`.',
     async () => {
-    const user = await app.service('users').create({
-      email: 'user' + new Date().getTime() + mailProvider,
-      password: 'secret'
-    });
-    try {
-      await app.service('sales').create({}, { user });
-      assert.fail(expectedBadRequest);
-    } catch (error) {
-      if (error instanceof AssertionError) {
-        throw error;
-      }
-      assert.equal(error.type, feathersErrorType);
-      assert.equal(error.code, badRequestHtmlStatusCode);
-      assert.equal(error.message,
-        'Please, provide values for `model`, `engine`, ' +
+      const user = await app.service('users').create({
+        email: 'user' + new Date().getTime() + mailProvider,
+        password: 'secret'
+      });
+      try {
+        const sale = await app.service('sales').create({}, { user });
+        console.info('THE SALE: %o', sale);
+        assert.fail(expectedBadRequest);
+      } catch (error) {
+        if (error instanceof AssertionError) {
+          throw error;
+        }
+        assert.equal(error.type, feathersErrorType);
+        assert.equal(error.code, badRequestHtmlStatusCode);
+        assert.equal(error.message,
+          'Please, provide values for `model`, `engine`, ' +
         '`doors`, `color` and, `extras`.'
-      );
-    }
-  });
+        );
+      }
+    });
 
   it(creatingUserWithout + '`model`.', async () => {
     const user = await app.service('users').create({
@@ -43,8 +45,8 @@ describe('sales hook: create.validate', () => {
     });
     try {
       await app.service('sales').create({
-       engine, doors, color, extras
-     }, { user });
+        engine, doors, color, extras
+      }, { user });
       assert.fail(expectedBadRequest);
     } catch (error) {
       if (error instanceof AssertionError) {
@@ -63,8 +65,8 @@ describe('sales hook: create.validate', () => {
     });
     try {
       await app.service('sales').create({
-       model, doors, color, extras
-     }, { user });
+        model, doors, color, extras
+      }, { user });
       assert.fail(expectedBadRequest);
     } catch (error) {
       if (error instanceof AssertionError) {
@@ -83,8 +85,8 @@ describe('sales hook: create.validate', () => {
     });
     try {
       await app.service('sales').create({
-       model, engine, color, extras
-     }, { user });
+        model, engine, color, extras
+      }, { user });
       assert.fail(expectedBadRequest);
     } catch (error) {
       if (error instanceof AssertionError) {
@@ -103,8 +105,8 @@ describe('sales hook: create.validate', () => {
     });
     try {
       await app.service('sales').create({
-       model, engine, doors, extras
-     }, { user });
+        model, engine, doors, extras
+      }, { user });
       assert.fail(expectedBadRequest);
     } catch (error) {
       if (error instanceof AssertionError) {
@@ -123,8 +125,8 @@ describe('sales hook: create.validate', () => {
     });
     try {
       await app.service('sales').create({
-       model, engine, doors, color
-     }, { user });
+        model, engine, doors, color
+      }, { user });
       assert.fail(expectedBadRequest);
     } catch (error) {
       if (error instanceof AssertionError) {

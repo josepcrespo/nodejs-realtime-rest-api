@@ -10,11 +10,11 @@ describe('sales', () => {
   });
 
   it('creates a `sale`', async () => {
-    const model = 'Sport';
-    const engine = 'hybrid';
-    const doors = '3';
-    const color = 'red';
-    const extras = 'basic';
+    const model = 'coupe';
+    const engine = 'electric';
+    const doors = '5';
+    const color = 'blue';
+    const extras = 'all';
     const user = await app.service('users').create({
       email: 'user' + new Date().getTime() + '@mailprovider.com',
       password: 'secret'

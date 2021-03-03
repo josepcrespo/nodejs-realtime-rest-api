@@ -6,7 +6,6 @@ module.exports = (options = {}) => {
   return async context => {
     // Get authenticated user
     const user = context.params.user;
-
     // Add new Fields
     context.data.createdById = user.id;
 

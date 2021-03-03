@@ -17,9 +17,9 @@ const initialUsers = [{
   'password': 'asdf1234',
   'permissions': 'salesman'
 }, {
-  "email": "manufacturer1@fictionalMotor.com",
-  "password": "asdf1234",
-  "permissions": "manufacturer"
+  'email': 'manufacturer1@fictionalMotor.com',
+  'password': 'asdf1234',
+  'permissions': 'manufacturer'
 }];
 
 module.exports = function (app) {
