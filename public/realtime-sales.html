@@ -1,0 +1,76 @@
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" />
+    <title>Realtime Sales Status Page</title>
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/feathers-chat@4.0.0/public/base.css">
+    <link rel="stylesheet" href="//unpkg.com/feathers-chat@4.0.0/public/chat.css">
+    <style>
+      header.title-bar {
+          padding: 10px 20px;
+      }
+
+      header.title-bar span.title {
+          font-weight: 100;
+          font-size: 2em;
+          padding-top: 12px;
+          display: block;
+          float: left;
+      }
+
+      a#logout {
+        float: right;
+      }
+
+      .button-primary {
+          background: #607D8B;
+      }
+
+      .button-primary:hover,
+      .button-primary:focus {
+        background: #263238;
+      }
+
+      .sales-list {
+        padding: 0 30px;
+      }
+
+      .sales-list h4 {
+        margin-top: 50px;
+      }
+
+      .sales-list .sale-item-prop {
+        background-color: gray;
+        border-radius: 16px;
+        color: white;
+        display: inline;
+        font-weight: 100;
+        line-height: 48px;
+        margin-right: 10px;
+        padding: 4px 4px 3px 15px;
+      }
+
+      .sales-list .sale-item-prop span {
+        background-color: #0288D1;
+        font-weight: 400;
+        margin-left: 10px;
+        padding: 0 12px 0 10px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 16px;
+        border-bottom-right-radius: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" class="flex flex-column"></div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
+    <script src="//unpkg.com/@feathersjs/client@^4.3.0/dist/feathers.js"></script>
+    <!-- We should not use a client socket.io library version newer than 2.4.0 -->
+    <!-- https://github.com/feathersjs/feathers/issues/2128#issuecomment-727668818 -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.4.0/socket.io.min.js"></script>
+    <script src="js/realtime-sales.js"></script>
+  </body>
+</html>

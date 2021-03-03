@@ -201,6 +201,10 @@ em {
   background-color: #F47024;
 }
 
+.realtime-sales-btn {
+  background-color: #E57373;
+}
+
 input[type="button"] {
   cursor: pointer;
   display: block;

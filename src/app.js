@@ -8,6 +8,7 @@ const logger = require('./logger');
 const feathers = require('@feathersjs/feathers');
 const configuration = require('@feathersjs/configuration');
 const express = require('@feathersjs/express');
+const socketio = require('@feathersjs/socketio');
 
 const swagger = require('feathers-swagger');
 const sequelizeToJsonSchemas = require('./sequelize-to-json-schemas');
@@ -29,7 +30,9 @@ app.configure(configuration());
 app.use(helmet());
 app.use(cors());
 app.use(compress());
+// Parse HTTP JSON bodies
 app.use(express.json());
+// Parse URL-encoded params
 app.use(express.urlencoded({ extended: true }));
 app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
 // Host the public folder
@@ -41,8 +44,11 @@ app.use(
   express.static(path.join(__dirname, '/../node_modules'))
 );
 
-// Set up Plugins and providers
+// Add REST API support
 app.configure(express.rest());
+
+// Configure Socket.io real-time APIs
+app.configure(socketio());
 
 // Set up for feathers-swagger
 // https://github.com/feathersjs-ecosystem/feathers-swagger#example-with-ui
@@ -82,10 +88,17 @@ app.configure(services);
 // Set up event channels (see channels.js)
 app.configure(channels);
 
-// Configure a middleware for 404s and the error handler
+// Configure a middleware for 404s and a better error handler
 app.use(express.notFound());
 app.use(express.errorHandler({ logger }));
 
 app.hooks(appHooks);
+
+// Add any new real-time connection to the `everybody` channel
+app.on('connection', connection =>
+  app.channel('everybody').join(connection)
+);
+// Publish all events to the `everybody` channel
+app.publish(data => app.channel('everybody'));
 
 module.exports = app;
