@@ -99,6 +99,7 @@ app.on('connection', connection =>
   app.channel('everybody').join(connection)
 );
 // Publish all events to the `everybody` channel
+// eslint-disable-next-line no-unused-vars
 app.publish(data => app.channel('everybody'));
 
 module.exports = app;
