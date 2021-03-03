@@ -474,7 +474,7 @@ $ npm run test
 
 Move into your project’s root directory.
 
-Start the projet's Docker containers if not running yet:
+Start the project's Docker containers if not running yet:
 
 ```bash
 $ docker-compose up
@@ -607,7 +607,7 @@ For running **locally**:
 $ npm run publish-coverage
 ```
 
-or, alternatively using **Docker**, start the projet's Docker containers if not running yet:
+or, alternatively using **Docker**, start the project's Docker containers if not running yet:
 
 ```bash
 $ docker-compose up
