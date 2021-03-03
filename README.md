@@ -41,7 +41,7 @@ Table of contents:
 
 # A realtime Node.js based REST API
 
-A REST API to manage a the sales of "Fictional Motor Co", a global automobiles manufacturer and seller. They require a scalable REST API with the possibility of consuming part of the data in realtime. Of course, all of this with the corresponding security and, CRUD functionality.
+A REST API to manage the sales of "Fictional Motor Co", a global automobiles manufacturer and seller. They require a scalable REST API with the possibility of consuming part of the data in realtime. Of course, all of this with the corresponding security and, CRUD functionality.
 
 ## Disclaimer
 
@@ -492,9 +492,9 @@ After running the tests, you can see a coverage report, in plain text format, th
 
 ```bash
   Feathers application tests
-    ✓ starts and shows the index page (63ms)
+    ✓ starts and shows the index page (95ms)
     GitHub OAuth login
-      ✓ The GitHub OAuth login page loads (812ms)
+      ✓ The GitHub OAuth login page loads (871ms)
     404 HTML status code responses
 info: Page not found {"type":"FeathersError","name":"NotFound","code":404,"className":"not-found","data":{"url":"/path/to/nowhere"},"errors":{}}
       ✓ shows a 404 HTML page
@@ -504,23 +504,28 @@ info: Page not found {"type":"FeathersError","name":"NotFound","code":404,"class
   authentication
     ✓ registered the `authentication` service
     local strategy
-      ✓ authenticates user and creates accessToken (129ms)
+      ✓ authenticates user and creates accessToken (166ms)
 
-  customers hook: create.process
-    ✓ creates a `customer` and attaches the ID of the `user` who created him (136ms)
+  sales hook: create.process
+    ✓ creates a `sale` and attaches the ID of the `user` who created him (160ms)
 
-  customers hook: create.validate
-    ✓ Throws a BadRequest when tries to create a `customer` without `name` and, `surname`. (122ms)
-    ✓ Throws a BadRequest when tries to create a `customer` without `name`. (128ms)
-    ✓ Throws a BadRequest when tries to create a `customer` without `name`. (146ms)
+  sales hook: create.validate
+    ✓ Throws a BadRequest when tries to create a `sale` without `model`, `engine`, `doors`, `color`, `extras`. (159ms)
+    ✓ Throws a BadRequest when tries to create a `sale` without `model`. (149ms)
+    ✓ Throws a BadRequest when tries to create a `sale` without `engine`. (152ms)
+    ✓ Throws a BadRequest when tries to create a `sale` without `doors`. (141ms)
+    ✓ Throws a BadRequest when tries to create a `sale` without `color`. (144ms)
+    ✓ Throws a BadRequest when tries to create a `sale` without `extras`. (157ms)
 
-  customers hook: patch.process
-    ✓ creates a `customer` and attaches the ID of the `user` who updated him (154ms)
+  sales hook: patch.process
+    ✓ updates a `sale` and attaches the ID of the `user` who updated him (180ms)
 
-  customers hook: patch.validate
-    ✓ A `user` can PATCH other `user` (141ms)
-    ✓ Throws a BadRequest when tries to update a `customer` with an empty `name` (128ms)
-    ✓ Throws a BadRequest when tries to update a `customer` with an empty `surname` (150ms)
+  sales hook: patch.validate
+    ✓ Throws a BadRequest when tries to update a `sale` with an empty `model` (154ms)
+    ✓ Throws a BadRequest when tries to update a `sale` with an empty `engine` (170ms)
+    ✓ Throws a BadRequest when tries to update a `sale` with an empty `doors` (161ms)
+    ✓ Throws a BadRequest when tries to update a `sale` with an empty `color` (156ms)
+    ✓ Throws a BadRequest when tries to update a `sale` with an empty `extras` (146ms)
 
   users hook: create.validate
     ✓ Throws a BadRequest when tries to create a `user` without `githubId` and, `email`
@@ -528,38 +533,38 @@ info: Page not found {"type":"FeathersError","name":"NotFound","code":404,"class
     ✓ Throws a BadRequest when tries to create a `user` without `githubId, `email` and, `password`.
 
   users hook: get.validate
-    ✓ A `user` without `admin` permissions can not get details from another user (248ms)
+    ✓ A `user` without `admin` permissions can not get details from another user (403ms)
 
   users hook: patch.validate
-    ✓ Patches a `user` (250ms)
-    ✓ A `user` with `admin` permisions can PATCH other `user` (259ms)
-    ✓ A `user` with `user` permisions can not PATCH other `user` (254ms)
-    ✓ Throws a BadRequest when tries to update a `user` with an empty `email` (127ms)
-    ✓ Throws a BadRequest when tries to update a `user` with an empty `password` (217ms)
-    ✓ Throws a BadRequest when tries to update a `user` with an empty `githubId` (152ms)
-    ✓ Throws a BadRequest when tries to update a `user` with an empty `permissions` (146ms)
+    ✓ Patches a `user` (375ms)
+    ✓ A `user` with `admin` permisions can PATCH other `user` (320ms)
+    ✓ A `user` with `user` permisions can not PATCH other `user` (282ms)
+    ✓ Throws a BadRequest when tries to update a `user` with an empty `email` (144ms)
+    ✓ Throws a BadRequest when tries to update a `user` with an empty `password` (146ms)
+    ✓ Throws a BadRequest when tries to update a `user` with an empty `githubId` (137ms)
+    ✓ Throws a BadRequest when tries to update a `user` with an empty `permissions` (141ms)
 
   users hook: remove.validate
-    ✓ A `user` with `admin` permissions can delete other `user` (269ms)
-    ✓ A `user` can not delete himself (136ms)
+    ✓ A `user` with `admin` permissions can delete other `user` (287ms)
+    ✓ A `user` can not delete himself (149ms)
 
-  customers
-    ✓ registered the `customers` service
-    ✓ creates a `customer` (144ms)
+  sales
+    ✓ registered the `sales` service
+    ✓ creates a `sale` (151ms)
 
   users
     ✓ registered the `users` service
-    ✓ creates a `user` and, encrypts his `password` (135ms)
-    ✓ removes `password` for external requests (281ms)
-    ✓ creates a `user` with default permissions (149ms)
+    ✓ creates a `user` and, encrypts his `password` (138ms)
+    ✓ removes `password` for external requests (257ms)
+    ✓ creates a `user` with default permissions (154ms)
 
 
-  33 passing (5s)
+  38 passing (7s)
 
 -------------------------------|---------|----------|---------|---------|-------------------
 File                           | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
 -------------------------------|---------|----------|---------|---------|-------------------
-All files                      |   88.15 |    71.43 |   79.07 |   88.15 |
+All files                      |   93.68 |    89.01 |    82.5 |   93.68 |
  src                           |    87.5 |    33.33 |      60 |    87.5 |
   app.hooks.js                 |     100 |      100 |     100 |     100 |
   app.js                       |     100 |      100 |     100 |     100 |
@@ -568,11 +573,11 @@ All files                      |   88.15 |    71.43 |   79.07 |   88.15 |
   logger.js                    |     100 |      100 |     100 |     100 |
   sequelize-to-json-schemas.js |     100 |      100 |     100 |     100 |
   sequelize.js                 |     100 |       50 |     100 |     100 | 22
- src/hooks/customers           |     100 |      100 |     100 |     100 |
-  customers.create.process.js  |     100 |      100 |     100 |     100 |
-  customers.create.validate.js |     100 |      100 |     100 |     100 |
-  customers.patch.process.js   |     100 |      100 |     100 |     100 |
-  customers.patch.validate.js  |     100 |      100 |     100 |     100 |
+ src/hooks/sales               |     100 |      100 |     100 |     100 |
+  sales.create.process.js      |     100 |      100 |     100 |     100 |
+  sales.create.validate.js     |     100 |      100 |     100 |     100 |
+  sales.patch.process.js       |     100 |      100 |     100 |     100 |
+  sales.patch.validate.js      |     100 |      100 |     100 |     100 |
  src/hooks/users               |     100 |     92.5 |     100 |     100 |
   users.create.validate.js     |     100 |    90.91 |     100 |     100 | 11
   users.get.validate.js        |     100 |    85.71 |     100 |     100 | 15
@@ -581,17 +586,18 @@ All files                      |   88.15 |    71.43 |   79.07 |   88.15 |
  src/middleware                |     100 |      100 |     100 |     100 |
   index.js                     |     100 |      100 |     100 |     100 |
  src/models                    |   95.45 |      100 |   83.33 |   95.45 |
-  customers.model.js           |   90.91 |      100 |   66.67 |   90.91 | 48
+  sales.model.js               |   90.91 |      100 |   66.67 |   90.91 | 87
   users.model.js               |     100 |      100 |     100 |     100 |
  src/services                  |     100 |      100 |     100 |     100 |
   index.js                     |     100 |      100 |     100 |     100 |
- src/services/customers        |   59.09 |        0 |      20 |   59.09 |
-  customers.hooks.js           |     100 |      100 |     100 |     100 |
-  customers.service.js         |   51.35 |        0 |      20 |   51.35 | 11-25,34-39,69-91
- src/services/users            |   94.74 |       50 |     100 |   94.74 |
+ src/services/sales            |     100 |      100 |     100 |     100 |
+  sales.class.js               |     100 |      100 |     100 |     100 |
+  sales.hooks.js               |     100 |      100 |     100 |     100 |
+  sales.service.js             |     100 |      100 |     100 |     100 |
+ src/services/users            |   87.18 |       25 |      50 |   87.18 |
   users.class.js               |     100 |      100 |     100 |     100 |
   users.hooks.js               |     100 |      100 |     100 |     100 |
-  users.service.js             |      92 |       50 |     100 |      92 | 39-40
+  users.service.js             |   80.77 |       25 |   33.33 |   80.77 | 42-47
 -------------------------------|---------|----------|---------|---------|-------------------
 ```
 
