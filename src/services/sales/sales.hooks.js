@@ -12,17 +12,17 @@ module.exports = {
     find: [ checkPermissions({ roles: [ 'admin', 'manufacturer' ] }) ],
     get: [ checkPermissions({ roles: [ 'admin', 'manufacturer' ] }) ],
     create: [
-      checkPermissions({ roles: [ 'admin', 'salesman' ] })
+      checkPermissions({ roles: [ 'admin', 'salesman' ] }),
       processSaleCreate(),
       validateSaleCreate()
     ],
     update: [
-      checkPermissions({ roles: [ 'admin', 'salesman' ] })
+      checkPermissions({ roles: [ 'admin', 'salesman' ] }),
       processSalePatch(),
       validateSalePatch()
     ],
     patch: [
-      checkPermissions({ roles: [ 'admin', 'salesman' ] })
+      checkPermissions({ roles: [ 'admin', 'salesman' ] }),
       processSalePatch(),
       validateSalePatch()
     ],

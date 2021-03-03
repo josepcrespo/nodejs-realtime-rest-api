@@ -2,7 +2,7 @@ Live app on [Heroku](https://heroku.com/) 🕺
 
 [https://nodejs-realtime-rest-api.herokuapp.com](https://nodejs-realtime-rest-api.herokuapp.com)
 
-![public/index.html](readme_images/public-index.gif)
+![public/index.html](readme_images/public-index-motorco.gif)
 
 Table of contents:
 
@@ -116,7 +116,7 @@ You can also check [a live version running on Heroku](https://nodejs-realtime-re
 
 ## Project installation
 
-The recommended way of installing the project is using the Docker approach. Anyway, you have the option to install all locally.
+The recommended way of installing the project is using the Docker approach. Anyway, you have the option to install it all locally.
 
 ### Local
 

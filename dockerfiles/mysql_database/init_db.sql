@@ -18,7 +18,7 @@ CREATE DATABASE IF NOT EXISTS `fictional_motor_company_tests`;
 
 USE `fictional_motor_company_tests`;
 
-# `customers` table
+# `sales` table
 # ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `sales`;
@@ -37,8 +37,8 @@ CREATE TABLE `sales` (
   PRIMARY KEY (`id`),
   KEY `createdById` (`createdById`),
   KEY `updatedById` (`updatedById`),
-  CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`createdById`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `customers_ibfk_2` FOREIGN KEY (`updatedById`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`createdById`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `sales_ibfk_2` FOREIGN KEY (`updatedById`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

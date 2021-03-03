@@ -49,14 +49,14 @@ module.exports = function (app) {
   users.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
-    const { customers } = models;
-    users.hasMany(customers, {
+    const { sales } = models;
+    users.hasMany(sales, {
       foreignKey: {
         name: 'createdById',
         allowNull: false
       }
     });
-    users.hasMany(customers, {
+    users.hasMany(sales, {
       foreignKey: {
         name: 'updatedById',
         allowNull: true

@@ -1,7 +1,7 @@
 // Initializes the `sales` service on path `/sales`
-const createService = require('feathers-sequelize');
-const createModel   = require('../../models/sales.model');
-const hooks         = require('./sales.hooks');
+const { Sales }   = require('./sales.class');
+const createModel = require('../../models/sales.model');
+const hooks       = require('./sales.hooks');
 
 module.exports = function (app) {
   const options = {
