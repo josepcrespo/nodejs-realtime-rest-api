@@ -24,8 +24,8 @@ module.exports = function (app) {
   const serviceSchema = jsonSchemaManager.generate(options.Model, openApi3Strategy);
 
   // Adding example values for Swagger UI.
-  serviceSchema.properties.model.example  = 'Sedan';
-  serviceSchema.properties.engine.example = 'Hybrid';
+  serviceSchema.properties.model.example  = 'sedan';
+  serviceSchema.properties.engine.example = 'hybrid';
   serviceSchema.properties.doors.example  = '5';
   serviceSchema.properties.color.example  = 'red';
   serviceSchema.properties.extras.example = 'all';
