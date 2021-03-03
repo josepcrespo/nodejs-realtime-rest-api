@@ -2,7 +2,7 @@ Live app on [Heroku](https://heroku.com/) 🕺
 
 [https://nodejs-realtime-rest-api.herokuapp.com](https://nodejs-realtime-rest-api.herokuapp.com)
 
-![public/index.html](readme_images/public-index-motorco.gif)
+![Arquitecture diagram](readme_images/fictional-motor-diagram-flow.png)
 
 Table of contents:
 

@@ -26,7 +26,7 @@ module.exports = {
       processSalePatch(),
       validateSalePatch()
     ],
-    remove: []
+    remove: [ checkPermissions({ roles: [ 'admin' ] }) ]
   },
 
   after: {
