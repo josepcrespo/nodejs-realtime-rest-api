@@ -69,7 +69,8 @@ const addSale = sale => {
   const sales = document.querySelector('.sales-list');
 
   if(sales) {
-    sales.innerHTML += 
+    // sales.innerHTML += 
+    sales.innerHTML = 
     `<div class="sale-item">
       <h4 class="sale-created-at">
         New sale: ${moment(sale.createdAt).format('MMM Do, hh:mm:ss')}
@@ -89,10 +90,12 @@ const addSale = sale => {
       <div class="sale-item-prop sale-extras">
         extras<span class="tag-value">${sale.extras}</span>
       </div>
-    </div>`;
+    </div>` +  sales.innerHTML;
 
-    // Always scroll to the bottom of our sales list
-    sales.scrollTop = sales.scrollHeight - sales.clientHeight;
+    // Always scroll to the top of our sales list
+    document.querySelector('body').scrollIntoView({
+      behavior: "smooth"
+    });
   }
 };
 
@@ -117,7 +120,6 @@ const showSales = async () => {
     }
   });
   
-  // We want to show the newest sale last
   sales.data.reverse().forEach(addSale);
 };
 
