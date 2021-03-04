@@ -1,6 +1,6 @@
 {
   "name": "nodejs-realtime-rest-api",
-  "description": "A REST API to manage the sales of \"Fictional Motor Co\".",
+  "description": "A realtime REST API to manage the sales of \"Fictional Motor Co\".",
   "version": "0.0.0",
   "homepage": "https://github.com/josepcrespo/nodejs-reatime-rest-api#readme",
   "license": "ISC",

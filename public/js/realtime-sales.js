@@ -16,7 +16,7 @@ const loginHTML = `<main class="login container">
   <div class="row">
     <div class="col-12 col-6-tablet push-3-tablet text-center heading">
       <h1 class="font-100">Log in</h1>
-      <h3>(you will need a user with "admin" or, "manufacturer" permissions)</h3>
+      <p>You will need a user with "admin" or, "manufacturer" permissions.</p>
     </div>
   </div>
   <div class="row">

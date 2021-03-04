@@ -41,7 +41,7 @@ Table of contents:
 
 # A realtime Node.js based REST API
 
-A REST API to manage the sales of "Fictional Motor Co", a global automobiles manufacturer and seller. They require a scalable REST API with the possibility of consuming part of the data in realtime. Of course, all of this with the corresponding security and, CRUD functionality.
+A realtime REST API to manage the sales of "Fictional Motor Co", a global automobiles manufacturer and seller. They require a scalable REST API with the possibility of consuming part of the data in realtime. Of course, all of this with the corresponding security and, CRUD functionality.
 
 ## Disclaimer
 
