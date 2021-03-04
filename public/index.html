@@ -49,15 +49,8 @@
                 The server's protected routes will check for a valid JWT in the Authorization header, and if it's present, the user will be allowed to access protected resources.
               </blockquote>
               <p>
-                Note that new users only have <em>"user"</em> permissions. This means that you only have access to the <em>/customers</em> service and all its associated methods.
+                Note that new users only have <em>"salesman"</em> permissions. This means that you only have access to `create`, `update` and, `patch` using the <em>/sales</em> service.
               </p>
-              <p>
-                Try the given JWT with a simple <em>curl</em> command to retrieve the customers list:
-              </p>
-              <code>
-                curl --location --request GET 'localhost:3030/customers' \<br>
-                &nbsp;&nbsp;--header 'Authorization: Bearer {{ jsonWebToken }}'
-              </code>
             </template>
             <template v-else-if="githubLoginError">
               <h1>GitHub Login error</h1>
@@ -92,7 +85,7 @@
               Run in Postman
             </a>
           </div>
-          <h2>Import a Collection on Postman for testing the API extensively (including the use of JWT and, the upload of image files to the <em>/customers</em> endpoint).</h2>
+          <h2>Import a Collection on Postman for testing the API extensively (including the use of JWT).</h2>
         </div>
         <div class="content-box">
           <h1>Check the realtime sales page for manufacturers</h1>

@@ -15,7 +15,8 @@ client.configure(feathers.authentication());
 const loginHTML = `<main class="login container">
   <div class="row">
     <div class="col-12 col-6-tablet push-3-tablet text-center heading">
-      <h1 class="font-100">Log in or signup</h1>
+      <h1 class="font-100">Log in</h1>
+      <h3>(you will need a user with "admin" or, "manufacturer" permissions)</h3>
     </div>
   </div>
   <div class="row">
@@ -33,9 +34,9 @@ const loginHTML = `<main class="login container">
           Log in
         </button>
 
-        <button type="button" id="signup" class="button button-primary block signup">
+        <!-- SORRY, NOT IMPLEMENTED YET! <button type="button" id="signup" class="button button-primary block signup">
           Sign up and log in
-        </button>
+        </button> -->
 
         <a href="/" class="back-link">
           Back to the homepage
