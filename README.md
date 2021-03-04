@@ -645,6 +645,7 @@ You can view the output here [http://localhost:3030/tests-coverage/](http://loca
 - [Better JSON errors with Feathers](https://docs.feathersjs.com/help/faq.html#why-am-i-not-getting-json-errors)
 - [Role and permissions with Feathers](https://github.com/feathersjs-ecosystem/feathers-permissions)
 - [Validation with Feathers](https://docs.feathersjs.com/help/faq.html#how-do-i-do-validation)
+- [HTTP vs Websockets: A performance comparison](https://blog.feathersjs.com/http-vs-websockets-a-performance-comparison-da2533f13a77)
 
 ### Sequelize
 
