@@ -71,27 +71,23 @@ const addSale = sale => {
   if(sales) {
     sales.innerHTML += 
     `<div class="sale-item">
-      <div class="sale-wrapper">
-        <p class="sale">
-          <h4 class="sale-created-at">
-            New sale: ${moment(sale.createdAt).format('MMM Do, hh:mm:ss')}
-          </h4>
-          <div class="sale-item-prop sale-model">
-            car model<span class="tag-value">${sale.model}</span>
-          </div>
-          <div class="sale-item-prop sale-engine">
-            type of engine<span class="tag-value">${sale.engine}</span>
-          </div>
-          <div class="sale-item-prop sale-doors">
-            number of doors<span class="tag-value">${sale.doors}</span>
-          </div>
-          <div class="sale-item-prop sale-color">
-            color<span class="tag-value">${sale.color}</span>
-          </div>
-          <div class="sale-item-prop sale-extras">
-            extras<span class="tag-value">${sale.extras}</span>
-          </div>
-        </p>
+      <h4 class="sale-created-at">
+        New sale: ${moment(sale.createdAt).format('MMM Do, hh:mm:ss')}
+      </h4>
+      <div class="sale-item-prop sale-model">
+        car model<span class="tag-value">${sale.model}</span>
+      </div>
+      <div class="sale-item-prop sale-engine">
+        type of engine<span class="tag-value">${sale.engine}</span>
+      </div>
+      <div class="sale-item-prop sale-doors">
+        number of doors<span class="tag-value">${sale.doors}</span>
+      </div>
+      <div class="sale-item-prop sale-color">
+        color<span class="tag-value">${sale.color}</span>
+      </div>
+      <div class="sale-item-prop sale-extras">
+        extras<span class="tag-value">${sale.extras}</span>
       </div>
     </div>`;
 
